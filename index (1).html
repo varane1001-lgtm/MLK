@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>For Malak 🌸</title>
+<link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@500;700;800&family=Quicksand:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --pink:#ffe1e6;
+    --pink2:#ffc9d4;
+    --lav:#e8ddff;
+    --mint:#d3f3e6;
+    --ink:#5b4b4f;
+    --plum:#8b5d75;
+    box-sizing:border-box;
+    padding-top:env(safe-area-inset-top,0px);
+    padding-bottom:env(safe-area-inset-bottom,0px);
+  }
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth; scroll-padding-top:env(safe-area-inset-top,0px);}
+  body{
+    margin:0;
+    min-height:100svh;
+    background:linear-gradient(160deg, var(--pink) 0%, var(--lav) 55%, var(--mint) 100%);
+    color:var(--ink);
+    font-family:'Quicksand', sans-serif;
+    overflow-x:hidden;
+  }
+  main{max-width:600px; margin:0 auto; padding:0 22px 100px; position:relative;}
+
+  .hero{
+    min-height:94svh;
+    display:flex; flex-direction:column; align-items:center; justify-content:center;
+    text-align:center; gap:6px; position:relative;
+  }
+
+  /* floating hearts */
+  .heart{
+    position:absolute; font-size:20px; opacity:.7;
+    animation:float 6s ease-in-out infinite;
+  }
+  @keyframes float{
+    0%,100%{ transform:translateY(0) rotate(0deg); }
+    50%{ transform:translateY(-22px) rotate(8deg); }
+  }
+  @media (prefers-reduced-motion: reduce){ .heart, .panda *, .panda { animation:none !important; } }
+
+  h1{
+    font-family:'Baloo 2', sans-serif;
+    font-weight:800;
+    font-size:clamp(46px, 13vw, 84px);
+    margin:10px 0 0;
+    color:var(--plum);
+    line-height:1;
+  }
+  .sub{
+    font-size:17px; color:var(--ink); opacity:.8; margin-top:8px;
+  }
+  .scroll-hint{ margin-top:36px; font-size:13px; opacity:.55; }
+
+  /* Panda */
+  .panda{ width:150px; height:150px; position:relative; animation:bob 3s ease-in-out infinite; }
+  @keyframes bob{ 0%,100%{transform:translateY(0)} 50%{transform:translateY(-8px)} }
+  .panda svg{ width:100%; height:100%; overflow:visible; }
+  .eye{ animation:blink 4.5s infinite; transform-origin:center; }
+  @keyframes blink{
+    0%,92%,100%{ transform:scaleY(1); }
+    95%{ transform:scaleY(0.1); }
+  }
+  .paw{ transform-origin:78px 92px; animation:wave 2.4s ease-in-out infinite; }
+  @keyframes wave{
+    0%,100%{ transform:rotate(0deg); }
+    25%{ transform:rotate(-22deg); }
+    50%{ transform:rotate(0deg); }
+    75%{ transform:rotate(-14deg); }
+  }
+
+  section{ padding:56px 0; border-top:2px dashed rgba(139,93,117,.18); }
+  section h2{
+    font-family:'Baloo 2', sans-serif; font-weight:700;
+    font-size:clamp(26px, 6vw, 34px);
+    color:var(--plum); margin:0 0 16px;
+  }
+  section p{ font-size:18px; line-height:1.7; max-width:50ch; }
+
+  .signature{ text-align:right; }
+  .signature p{ margin-left:auto; }
+  .from{
+    font-family:'Baloo 2', sans-serif; font-weight:700;
+    font-size:24px; color:var(--plum); margin-top:20px;
+  }
+
+  .reveal{ text-align:center; }
+  button{
+    font-family:'Baloo 2', sans-serif; font-weight:700; font-size:16px;
+    color:#fff; background:var(--plum); border:none;
+    padding:15px 32px; border-radius:999px; cursor:pointer;
+    box-shadow:0 6px 0 #6e4560;
+    transition:transform .1s ease, box-shadow .1s ease;
+  }
+  button:active{ transform:translateY(4px); box-shadow:0 2px 0 #6e4560; }
+  button:focus-visible{ outline:3px solid var(--pink2); outline-offset:3px; }
+
+  #note{
+    font-family:'Baloo 2', sans-serif; font-weight:600;
+    font-size:22px; color:var(--plum); margin-top:28px; min-height:1.6em;
+    max-width:32ch; margin-left:auto; margin-right:auto; opacity:0; transition:opacity .4s ease;
+  }
+  #note.show{ opacity:1; }
+
+  /* Entry gate */
+  #gate{
+    position:fixed; inset:0; z-index:10;
+    display:flex; flex-direction:column; align-items:center; justify-content:center;
+    gap:22px; text-align:center; padding:24px;
+    background:linear-gradient(160deg, var(--pink) 0%, var(--lav) 55%, var(--mint) 100%);
+    transition:opacity .6s ease, visibility .6s ease;
+  }
+  #gate.hidden{ opacity:0; visibility:hidden; pointer-events:none; }
+  .gate-emoji{ font-size:54px; animation:bob 3s ease-in-out infinite; }
+  #gate h1{
+    font-family:'Baloo 2', sans-serif; font-weight:800;
+    font-size:clamp(32px, 9vw, 46px); color:var(--plum); margin:0;
+  }
+  #gate p{ font-size:16px; color:var(--ink); opacity:.8; max-width:34ch; margin:0; }
+  #openBtn{
+    font-family:'Baloo 2', sans-serif; font-weight:700; font-size:17px;
+    color:#fff; background:var(--plum); border:none;
+    padding:16px 36px; border-radius:999px; cursor:pointer;
+    box-shadow:0 6px 0 #6e4560;
+    transition:transform .1s ease, box-shadow .1s ease;
+  }
+  #openBtn:active{ transform:translateY(4px); box-shadow:0 2px 0 #6e4560; }
+  #openBtn:focus-visible{ outline:3px solid var(--pink2); outline-offset:3px; }
+
+  #content{ opacity:0; transition:opacity .7s ease; }
+  #content.show{ opacity:1; }
+</style>
+</head>
+<body>
+
+<div id="gate">
+  <div class="gate-emoji">🌸💌</div>
+  <h1>A little something<br>for Malak</h1>
+  <p>Open when you're ready 💕</p>
+  <button id="openBtn">open it</button>
+</div>
+
+<main id="content">
+
+  <div class="hero">
+    <span class="heart" style="left:8%; top:20%;">💗</span>
+    <span class="heart" style="right:10%; top:30%; animation-delay:1.5s;">✨</span>
+    <span class="heart" style="left:14%; bottom:22%; animation-delay:3s;">🌸</span>
+    <span class="heart" style="right:6%; bottom:18%; animation-delay:2s;">💗</span>
+
+    <div class="panda">
+      <svg viewBox="0 0 150 150" xmlns="http://www.w3.org/2000/svg">
+        <ellipse cx="45" cy="42" rx="16" ry="16" fill="#3a2e30"/>
+        <ellipse cx="105" cy="42" rx="16" ry="16" fill="#3a2e30"/>
+        <ellipse cx="75" cy="80" rx="52" ry="46" fill="#ffffff"/>
+        <ellipse class="eye" cx="55" cy="72" rx="15" ry="18" fill="#3a2e30"/>
+        <ellipse class="eye" cx="95" cy="72" rx="15" ry="18" fill="#3a2e30"/>
+        <circle cx="58" cy="70" r="4" fill="#fff"/>
+        <circle cx="98" cy="70" r="4" fill="#fff"/>
+        <ellipse cx="75" cy="92" rx="7" ry="5" fill="#3a2e30"/>
+        <path d="M75 97 Q75 105 65 107 M75 97 Q75 105 85 107" stroke="#3a2e30" stroke-width="2.5" fill="none" stroke-linecap="round"/>
+        <ellipse cx="30" cy="95" rx="12" ry="14" fill="#3a2e30"/>
+        <g class="paw">
+          <ellipse cx="118" cy="88" rx="13" ry="15" fill="#3a2e30"/>
+        </g>
+      </svg>
+    </div>
+
+    <h1>Malak</h1>
+    <p class="sub">a little something, just for you 🌸💕</p>
+    <div class="scroll-hint">keep scrolling ↓</div>
+  </div>
+
+  <section>
+    <h2>Hey Malak 🌸</h2>
+    <p>You didn't deserve what you went through. Not even a little bit. But sometimes the right words just need to come from the right person — so here they are, from me <span style="white-space:nowrap;">x)</span></p>
+    <p>You are perfect. Genuinely, ridiculously gorgeous, inside and out. Smart, funny, kind — the whole package. Anyone who made you doubt that just wasn't paying attention.</p>
+    <p>So don't carry what isn't yours to carry. Carry this instead: you're amazing, and you always were.</p>
+  </section>
+
+  <section class="signature">
+    <p style="margin-left:auto;">You're going to bounce back stronger than ever. Until then, just know that this is exactly how I see you.</p>
+    <div class="from">— Mohammed 🌸</div>
+  </section>
+
+  <section class="reveal">
+    <p style="margin:0 auto;">one more reminder, just in case</p>
+    <button id="btn">tap the panda's paw</button>
+    <div id="note"></div>
+  </section>
+
+</main>
+
+<script>
+  document.getElementById('openBtn').addEventListener('click', () => {
+    document.getElementById('gate').classList.add('hidden');
+    document.getElementById('content').classList.add('show');
+  });
+
+  const notes = [
+    "You are more than enough.",
+    "None of this was on you.",
+    "Your worth isn't up for debate.",
+    "You deserve softness, not doubt.",
+    "Malak — an angel, just like your name says."
+  ];
+  let idx = 0;
+  const noteEl = document.getElementById('note');
+  document.getElementById('btn').addEventListener('click', () => {
+    noteEl.classList.remove('show');
+    setTimeout(() => {
+      noteEl.textContent = notes[idx % notes.length];
+      idx++;
+      noteEl.classList.add('show');
+    }, 150);
+  });
+</script>
+
+</body>
+</html>
